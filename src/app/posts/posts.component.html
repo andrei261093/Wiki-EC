@@ -1,0 +1,32 @@
+<div class="row" *ngFor="let post of posts" style="padding: 1%">
+  <div class="col-md-12">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ post.author.nume }} {{ post.author.prenume }}</mat-card-title>
+        <mat-card-subtitle>{{ post.titlu }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p [innerHTML]="post.descriere" class="col-md-12">
+        </p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <mat-accordion>
+
+          <!-- Comentariile -->
+          <app-post-comments></app-post-comments>
+
+          <!-- Adauga comentariu -->
+         <app-add-comment-input></app-add-comment-input>
+
+        </mat-accordion>
+      </mat-card-actions>
+    </mat-card>
+    <br/>
+  </div>
+</div>
+
+
+

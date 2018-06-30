@@ -1,0 +1,64 @@
+<br/>
+<div style="position: fixed; width: 19%" >
+  <mat-accordion class="example-headers-align">
+
+    <mat-expansion-panel hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Detalii utilizator
+        </mat-panel-title>
+        <mat-panel-description>
+
+          <mat-icon style="margin-left: 90%">account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-form-field style="width: 100%" class="example-full-width">
+        <input matInput placeholder="Nume" disabled value="Iorga">
+      </mat-form-field>
+      <mat-form-field style="width: 100%" class="example-full-width">
+        <input matInput placeholder="Prenume" disabled value="Andrei">
+      </mat-form-field>
+
+      <mat-action-row>
+        <button mat-button color="primary">Editeaza profilul</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Filtre pentru postari
+        </mat-panel-title>
+        <mat-panel-description>
+
+          <mat-icon style="margin-left: 90%">filter_list</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-form-field style="width: 100%">
+        <mat-select placeholder="Categoria" [formControl]="categorii" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let animal of categoriiList" [value]="animal">
+            {{animal}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="categorii.hasError('required')">Este necesar sa alegeti o categorie</mat-error>
+        <mat-hint>{{categorii.value?.sound}}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field style="width: 100%">
+        <mat-select placeholder="Subcategorii" [formControl]="subCategorii" multiple>
+          <mat-option *ngFor="let topping of subCategoriiList" [value]="topping">{{topping}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-action-row>
+        <button mat-button color="primary">Aplica filtrele</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+</div>
+

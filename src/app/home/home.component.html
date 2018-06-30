@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="sidebar-nav-fixed affix">
+
+        <!--Filtrele-->
+        <app-side-filters class="position-fixed" style="width: 19%"></app-side-filters>
+
+      </div>
+    </div>
+    <div class="col-md-8">
+
+      <!--Adauga Postare-->
+      <app-new-post-form ></app-new-post-form>
+
+      <!--Lista cu postari -->
+      <div  style="overflow-y: scroll; overflow: hidden;">
+        <app-posts></app-posts>
+      </div>
+
+      <!--Buton pentru incarcare mai multe postari-->
+      <button mat-raised-button color="primary" class="col-md-12">Incarca mai multe postari</button>
+      <br><br>
+
+    </div>
+  </div>
+</div>
+
+

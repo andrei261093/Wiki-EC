@@ -1,0 +1,76 @@
+<br/>
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Adauga o postare noua
+      </mat-panel-title>
+      <mat-panel-description>
+        {{panelOpenState ? 'Click pentru a renunta' : 'Click pentru a incepe'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div class="col-md-12">
+      <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+              <form method="post">
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Titlu">
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-4">
+                    <mat-form-field>
+                      <mat-select placeholder="Categoria" [formControl]="categorii" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let animal of categoriiList" [value]="animal">
+                          {{animal}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="categorii.hasError('required')">Este necesar sa alegeti o categorie</mat-error>
+                      <mat-hint>{{categorii.value?.sound}}</mat-hint>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-4">
+                    <mat-form-field>
+                      <mat-select placeholder="Subcategorii" [formControl]="subCategorii" multiple>
+                        <mat-option *ngFor="let topping of subCategoriiList" [value]="topping">{{topping}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <br/><br/>
+                  <div class="col-md-12">
+                    <div [froalaEditor]='options'></div>
+                  </div>
+                </div>
+                <div class="row">
+
+                </div> <br/>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <button mat-raised-button color="warn">Renunta</button>
+                    <button mat-raised-button color="primary" class="pull-right">Posteaza</button>
+                  </div>
+                </div>
+                <br/>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </mat-expansion-panel>
+</mat-accordion>
+<br/>

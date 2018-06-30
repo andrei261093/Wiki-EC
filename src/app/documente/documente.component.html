@@ -1,0 +1,16 @@
+<h1>Lista documente:</h1>
+
+<div class="row">
+  <div class="col-md-12">
+    <ul>
+      <li *ngFor="let document of documente">
+        <h5>
+          {{ document.titlu }}
+        </h5>
+        - {{ document.author.nume }} {{ document.author.prenume }}
+      </li>
+    </ul>
+  </div>
+</div>
+
+

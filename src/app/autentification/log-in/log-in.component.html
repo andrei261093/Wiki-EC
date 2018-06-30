@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <form (ngSubmit)="onSubmit(userForm.value)" #userForm="ngForm">
+        <mat-form-field class="col-md-12">
+          <input matInput placeholder="Nume utilizator" ngModel name="username" required>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-12">
+          <input type="password" matInput placeholder="Parola" ngModel name="password" required>
+        </mat-form-field>
+
+        <button type="submit" class="col-md-12" mat-raised-button color="primary">Log in</button>
+      </form>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
