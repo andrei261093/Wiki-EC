@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DocumenteComponent} from "./documente/documente.component";
-import { PostsComponent} from "./posts/posts.component";
-import { HomeComponent } from "./home/home.component";
-import { LogInComponent } from "./autentification/log-in/log-in.component";
-import {AuthGuard} from "./auth.guard";
+import { DocumenteComponent} from "./components/documente/documente.component";
+import { PostsComponent} from "./components/posts/posts.component";
+import { HomeComponent } from "./components/home/home.component";
+import { LogInComponent } from "./components/autentification/log-in/log-in.component";
+import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
   {

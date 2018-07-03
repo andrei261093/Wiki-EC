@@ -3,23 +3,23 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { OtherViewComponent } from './other-view/other-view.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { DocumenteComponent } from './documente/documente.component';
-import { PostsComponent } from './posts/posts.component';
+import { HomeComponent } from './components/home/home.component';
+import { OtherViewComponent } from './components/other-view/other-view.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { DocumenteComponent } from './components/documente/documente.component';
+import { PostsComponent } from './components/posts/posts.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { HttpClientModule} from "@angular/common/http";
 import { MaterialModule } from "./material";
-import { NewPostFormComponent } from './new-post-form/new-post-form.component';
+import { NewPostFormComponent } from './components/new-post-form/new-post-form.component';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
-import { SideFiltersComponent } from './side-filters/side-filters.component';
-import { PostCommentsComponent } from './post-comments/post-comments.component';
-import { AddCommentInputComponent } from './add-comment-input/add-comment-input.component';
-import { LogInComponent } from './autentification/log-in/log-in.component';
-import { AuthGuard } from "./auth.guard";
+import { SideFiltersComponent } from './components/side-filters/side-filters.component';
+import { PostCommentsComponent } from './components/post-comments/post-comments.component';
+import { AddCommentInputComponent } from './components/add-comment-input/add-comment-input.component';
+import { LogInComponent } from './components/autentification/log-in/log-in.component';
+import { AuthGuard } from "./guards/auth.guard";
 
 
 @NgModule({

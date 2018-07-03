@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {UserInterface, UserService} from "../../user.service";
+import {UserInterface, UserService} from "../../../services/user/user.service";
 import {Router} from "@angular/router";
 import {MatSnackBar} from '@angular/material';
 
