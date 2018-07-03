@@ -5,7 +5,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="this.userService.isUserLoggedIn()">
       <ul class="navbar-nav col-md-10">
         <li class="nav-item">
           <a class="nav-link" routerLink="/documente">Documente <span class="sr-only">(current)</span></a>
@@ -19,14 +19,9 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right col-md-4">
-        <li class="nav-item dropdown">
-          <a class="nav-link pull-left" routerLink="/login" role="button">
-            Log in
-          </a>
-        </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="this.userService.isUserLoggedIn()">
           <a class="nav-link dropdown-toggle pull-left"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            User
+            {{ this.userService.getCurrentUser().firstName + ' ' + this.userService.getCurrentUser().lastName}}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Setari cont</a>

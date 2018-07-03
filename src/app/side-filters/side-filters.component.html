@@ -14,10 +14,10 @@
       </mat-expansion-panel-header>
 
       <mat-form-field style="width: 100%" class="example-full-width">
-        <input matInput placeholder="Nume" disabled value="Iorga">
+        <input matInput placeholder="Nume" disabled value="{{ this.userService.getCurrentUser().lastName }}">
       </mat-form-field>
       <mat-form-field style="width: 100%" class="example-full-width">
-        <input matInput placeholder="Prenume" disabled value="Andrei">
+        <input matInput placeholder="Prenume" disabled value="{{ this.userService.getCurrentUser().firstName }}">
       </mat-form-field>
 
       <mat-action-row>

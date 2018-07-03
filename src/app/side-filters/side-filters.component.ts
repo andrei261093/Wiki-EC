@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
+import { UserService } from "../user.service";
 
 @Component({
   selector: 'app-side-filters',
@@ -14,7 +15,7 @@ export class SideFiltersComponent implements OnInit {
   categoriiList = ['Tehnic', 'Business', 'Mentenenta'];
   subCategoriiList = ['Angular', 'Java', 'PHP']
 
-  constructor() { }
+  constructor(public userService: UserService) { }
 
   ngOnInit() {
 

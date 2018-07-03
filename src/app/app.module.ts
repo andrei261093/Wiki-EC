@@ -19,7 +19,7 @@ import { SideFiltersComponent } from './side-filters/side-filters.component';
 import { PostCommentsComponent } from './post-comments/post-comments.component';
 import { AddCommentInputComponent } from './add-comment-input/add-comment-input.component';
 import { LogInComponent } from './autentification/log-in/log-in.component';
-
+import { AuthGuard } from "./auth.guard";
 
 
 @NgModule({
@@ -45,9 +45,9 @@ import { LogInComponent } from './autentification/log-in/log-in.component';
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 
