@@ -17,6 +17,7 @@ export interface UserInterface {
 export class UserService {
 
   currentUser: UserInterface;
+  serverURL = 'http://localhost:8080';
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -31,14 +32,14 @@ export class UserService {
     let headers_object = new HttpHeaders();
     headers_object.append('Content-Type', 'application/x-www-form-urlencoded');
     headers_object.append("Cache-Control", "no-cache");
-    return this.http.post('http://192.168.1.34:8080/login', formData, {headers: headers_object, withCredentials: true});
+    return this.http.post(this.serverURL + '/login', formData, {headers: headers_object, withCredentials: true});
   }
 
   logOutUser() {
     let headers_object = new HttpHeaders();
     headers_object.append("Cache-Control", "no-cache");
 
-    this.http.get('http://192.168.1.34:8080/clear', {headers: headers_object, withCredentials: true}).subscribe(
+    this.http.get(this.serverURL + '/clear', {headers: headers_object, withCredentials: true}).subscribe(
       resp => {
         console.log(resp);
         this.clearUserSession();

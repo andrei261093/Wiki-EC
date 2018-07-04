@@ -6,15 +6,17 @@ import {HttpClient} from "@angular/common/http";
 })
 export class DataService {
 
+  serverURL = 'http://localhost:8080';
+
   constructor(private http: HttpClient) {
   }
 
   getDocuments() {
-    return this.http.get('http://192.168.1.34:8080/getDocuments')
+    return this.http.get(this.serverURL + '/getDocuments')
   }
 
   //Posts Routes
   getPosts() {
-    return this.http.get('http://192.168.1.34:8080/getPostList', {withCredentials: true})
+    return this.http.get(this.serverURL + '/getPostList', {withCredentials: true})
   }
 }
