@@ -1,32 +1,60 @@
-<div class="row" *ngFor="let post of posts" style="padding: 1%">
-  <div class="col-md-12">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{ post.author.nume }} {{ post.author.prenume }}</mat-card-title>
-        <mat-card-subtitle>{{ post.titlu }}</mat-card-subtitle>
-      </mat-card-header>
+<mat-progress-bar mode="indeterminate" *ngIf="showProgressBar"></mat-progress-bar>
+<div *ngIf="posts.length > 0">
+  <div class="row" *ngFor="let post of posts" style="padding: 1%">
+    <div class="col-md-12">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar ><img style="width: 40px" class="avatar-img" src="{{post.author.avatarURL}}" alt="Italian Trulli"></div>
+          <mat-card-title >
+            <b>{{ post.author.nume }} {{ post.author.prenume }}</b>
+            <span class="pull-right" style="margin-top: 0.3%; margin-left: 1%; color: rgba(0,0,0,.54);"> {{ post.dataAdaugare  | date:'dd MMMM yyyy - HH:mm' }}</span><mat-icon class="pull-right">access_time</mat-icon>
+          </mat-card-title>
+          <mat-card-subtitle>
+            {{ post.titlu }}
+            <a href="#" class="pull-right" (click)="seteazaFiltru(subCategory)" style="padding-right: 1%" *ngFor="let subCategory of post.subCategorii"> #{{ subCategory.denumire }}</a>
 
-      <mat-card-content>
-        <p [innerHTML]="post.descriere" class="col-md-12">
-        </p>
-      </mat-card-content>
+          </mat-card-subtitle>
+        </mat-card-header>
 
-      <mat-card-actions>
-        <mat-accordion>
+        <mat-card-content>
+          <hr>
+          <div [froalaView]="post.descriere">
+          </div>
+        </mat-card-content>
 
-          <!-- Comentariile -->
-          <app-post-comments></app-post-comments>
+        <mat-card-actions>
+          <mat-accordion>
+            <!-- Comentariile -->
+            <app-post-comments [comentarii]="post.comentarii.length > 0 ? post.comentarii : []" [postId]="post.id"></app-post-comments>
 
-          <!-- Adauga comentariu -->
-         <app-add-comment-input></app-add-comment-input>
+          </mat-accordion>
 
-        </mat-accordion>
-      </mat-card-actions>
-    </mat-card>
-    <br/>
+          <mat-accordion>
+            <!-- Adauga comentariu -->
+            <app-add-comment-input [post]="post"></app-add-comment-input>
+
+          </mat-accordion>
+        </mat-card-actions>
+      </mat-card>
+    </div>
   </div>
+  <br/>
+  <mat-paginator [length]="length"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="pageSizeOptions"
+                 (page)="onPaginationChanged($event)">
+  </mat-paginator>
 </div>
 
+<br/>
+
+<div class="row justify-content-center" *ngIf="!showProgressBar && posts.length <= 0">
+  <div class="col-md-8">
+    <img src="https://cdn.dribbble.com/users/308895/screenshots/2598725/no-results.gif" style="width: 100%">
+  </div>
+  <div style="padding-top: 10%" class="col-md-12">
+    <button mat-raised-button style="width: 100%" color="primary">Reseteaza cautarea</button>
+  </div>
+</div>
 
 

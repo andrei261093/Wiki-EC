@@ -2,6 +2,51 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 .example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-image: url('http://andrei261093.go.ro:8080/user/getAvatar');
   background-size: cover;
+}
+
+html, body {
+  background-color: #f5f5f5;
+}
+
+.mat-card-header-text {
+  width: 100%;
+}
+
+.example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+.mat-toolbar {
+  font: 500 14px/32px Roboto,"Helvetica Neue",sans-serif
+}
+
+table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td, table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+table td:hover {background-color: #ddd;}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.avatar-img {
+  border-radius: 50%;
 }

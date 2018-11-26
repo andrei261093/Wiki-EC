@@ -5,11 +5,12 @@ import { PostsComponent} from "./components/posts/posts.component";
 import { HomeComponent } from "./components/home/home.component";
 import { LogInComponent } from "./components/autentification/log-in/log-in.component";
 import {AuthGuard} from "./guards/auth.guard";
+import {EditProfileComponent} from "./components/edit-profile/edit-profile.component";
 
 const routes: Routes = [
   {
-    path: 'documente',
-    component: DocumenteComponent,
+    path: 'editProfile',
+    component: EditProfileComponent,
     canActivate: [AuthGuard]
   },
   {

@@ -1,4 +1,4 @@
-<mat-expansion-panel >
+<mat-expansion-panel  [expanded]="pannelOpened"  (opened)="pannelOpened = true">
   <mat-expansion-panel-header>
     <mat-panel-title>
       Adauga un comentariu
@@ -9,10 +9,12 @@
   </mat-expansion-panel-header>
 
   <div class="col-md-12">
-    <div [froalaEditor]='options'></div>
+    <div [froalaEditor]='options' [(ngModel)]="comment"></div>
   </div>
+  <br>
+  <mat-progress-bar mode="indeterminate" *ngIf="showProgressBar"></mat-progress-bar>
 
   <mat-action-row>
-    <button mat-raised-button color="primary">Posteaza</button>
+    <button mat-raised-button color="primary" (click)="makeComment()">Posteaza</button>
   </mat-action-row>
 </mat-expansion-panel>

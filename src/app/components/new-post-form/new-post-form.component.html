@@ -1,13 +1,13 @@
 <br/>
 <mat-accordion>
-  <mat-expansion-panel (opened)="panelOpenState = true"
-                       (closed)="panelOpenState = false">
+  <mat-expansion-panel [expanded]="expansionOpenState" (opened)="expansionOpenState = true"
+                       (closed)="expansionOpenState = false">
     <mat-expansion-panel-header>
       <mat-panel-title>
         Adauga o postare noua
       </mat-panel-title>
       <mat-panel-description>
-        {{panelOpenState ? 'Click pentru a renunta' : 'Click pentru a incepe'}}
+        {{expansionOpenState ? 'Click pentru a renunta' : 'Click pentru a incepe'}}
       </mat-panel-description>
     </mat-expansion-panel-header>
 
@@ -16,56 +16,66 @@
 
         <div class="row">
             <div class="col-md-12">
-              <form method="post">
+              <div>
 
                 <div class="row">
                   <div class="col-md-4">
                     <mat-form-field class="example-full-width">
-                      <input matInput placeholder="Titlu">
+                      <input matInput placeholder="Titlu"  [(ngModel)]="title" >
                     </mat-form-field>
                   </div>
 
                   <div class="col-md-4">
                     <mat-form-field>
-                      <mat-select placeholder="Categoria" [formControl]="categorii" required>
-                        <mat-option>--</mat-option>
-                        <mat-option *ngFor="let animal of categoriiList" [value]="animal">
-                          {{animal}}
+                      <mat-select placeholder="Categoria" [formControl]="categoriesFormControl" required >
+                        <mat-option *ngFor="let category of categoryList" [value]="category" >
+                          {{category['denumire']}}
                         </mat-option>
                       </mat-select>
-                      <mat-error *ngIf="categorii.hasError('required')">Este necesar sa alegeti o categorie</mat-error>
-                      <mat-hint>{{categorii.value?.sound}}</mat-hint>
+                      <mat-error *ngIf="categoriesFormControl.hasError('required')">Este necesar sa alegeti o categorie</mat-error>
+                      <mat-hint>{{categoriesFormControl.value?.sound}}</mat-hint>
                     </mat-form-field>
                   </div>
 
                   <div class="col-md-4">
                     <mat-form-field>
-                      <mat-select placeholder="Subcategorii" [formControl]="subCategorii" multiple>
-                        <mat-option *ngFor="let topping of subCategoriiList" [value]="topping">{{topping}}</mat-option>
+                      <mat-select placeholder="Subcategorii" [formControl]="subCategoriesFormControl" multiple required>
+                        <mat-option *ngFor="let subcategory of categoriesFormControl.value['subCategorii']" [value]="subcategory">{{subcategory['denumire']}}</mat-option>
                       </mat-select>
+                      <mat-error *ngIf="subCategoriesFormControl.hasError('required')">Este necesar sa alegeti o categorie</mat-error>
+                      <mat-hint>{{subCategoriesFormControl.value?.sound}}</mat-hint>
                     </mat-form-field>
                   </div>
                 </div>
 
                 <div class="row">
-                  <br/><br/>
                   <div class="col-md-12">
-                    <div [froalaEditor]='options'></div>
-                  </div>
-                </div>
-                <div class="row">
-
-                </div> <br/>
-
-                <div class="row">
-                  <div class="col-md-12">
-                    <button mat-raised-button color="warn">Renunta</button>
-                    <button mat-raised-button color="primary" class="pull-right">Posteaza</button>
+                    <button mat-button class="pull-right"><mat-icon>attach_file</mat-icon></button>
                   </div>
                 </div>
                 <br/>
 
-            </form>
+                <div class="row">
+                  <br/><br/>
+                  <div class="col-md-12">
+                    <div [froalaEditor]='options'  [(ngModel)]="description" ></div>
+                  </div>
+                </div>
+                <div class="row">
+
+                </div>
+                <br/>
+                <mat-progress-bar mode="indeterminate" *ngIf="showProgressBar"></mat-progress-bar>
+                <br/>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <button mat-raised-button color="warn" (click)="expansionOpenState = false; this.clearNewPostFrom()">Renunta</button>
+                    <button mat-raised-button color="primary" class="pull-right" (click)="makePost()">Posteaza</button>
+                  </div>
+                </div>
+                <br/>
+            </div>
           </div>
         </div>
       </div>

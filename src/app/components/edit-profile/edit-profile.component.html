@@ -1,0 +1,99 @@
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <mat-expansion-panel hideToggle="true" [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Detalii utilizator
+          </mat-panel-title>
+          <mat-panel-description>
+
+            <mat-icon style="margin-left: 90%">account_circle</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div class="row justify-content-center">
+          <img
+            src="{{ imageUrl }}"
+            alt="Avatar" class="avatar-img" style="width: 150px; height: 150px">
+        </div>
+        <br>
+        <div class="row justify-content-center">
+          <h5>{{ userService.getCurrentUser().firstName }} {{ userService.getCurrentUser().lastName }}</h5>
+        </div>
+
+        <mat-action-row>
+          <input type='file' (change)="onSelectFile($event)">
+        </mat-action-row>
+      </mat-expansion-panel>
+    </div>
+
+    <div class="col-md-8">
+      <mat-card>
+        <div>
+          <mat-form-field>
+            <input matInput #message maxlength="25" placeholder="Username" disabled value="{{userService.getCurrentUser().username}}">
+            <mat-hint align="start"><strong>Username-ul nu se poate modifica</strong></mat-hint>
+            <mat-hint align="end">{{message.value.length}} / 25</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput #message maxlength="25" placeholder="Nume" value="lastName" [(ngModel)]="lastName">
+            <mat-hint align="start"><strong>Numele dvs.</strong></mat-hint>
+            <mat-hint align="end">{{message.value.length}} / 25</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput #message maxlength="25" placeholder="Prenumele" value="firstName" [(ngModel)]="firstName">
+            <mat-hint align="start"><strong>Prenumele dvs.</strong></mat-hint>
+            <mat-hint align="end">{{message.value.length}} / 25</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Email" [formControl]="emailFormControl"
+                   [errorStateMatcher]="matcher">
+            <mat-hint>Email-ul dvs pentru notificari</mat-hint>
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              Va rugam sa introduceti o adresa valida
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              Email-ul este <strong>obligatoriu</strong> pentru a continua
+            </mat-error>
+          </mat-form-field>
+          <br><br>
+          <mat-accordion>
+            <mat-expansion-panel>
+
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Schimba parola
+                </mat-panel-title>
+                <mat-panel-description>
+                  Apasa aici pentru a schimba parola
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <mat-form-field>
+                <input matInput #message [(ngModel)]="newPassword" maxlength="25" placeholder="Parola noua" type="password">
+                <mat-hint align="start"><strong>Introduceti noua parola</strong></mat-hint>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput #message [(ngModel)]="confirmNewPassword" maxlength="25" placeholder="Reintroduceti parola noua" type="password">
+                <mat-hint align="start"><strong>Reintroduceti noua parola</strong></mat-hint>
+              </mat-form-field>
+              <br><br>
+            </mat-expansion-panel>
+          </mat-accordion>
+
+          <br><hr><br>
+
+          <button mat-raised-button color="primary" (click)="saveChanges()" style="width: 100%;">Salveaza modificarile</button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
+

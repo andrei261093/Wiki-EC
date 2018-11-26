@@ -1,0 +1,13 @@
+<h2 mat-dialog-title> {{ this.dialog['title'] }}</h2>
+<mat-dialog-content>
+  {{ this.dialog['message'] }}
+  <br>
+  <mat-form-field style="width: 100%">
+    <input matInput #message [(ngModel)]="input" maxlength="25" placeholder="Parola dvs curenta"
+           type="password">
+  </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-button (click)="onOkButtonClicked()" class="pull-right">Ok</button>
+</mat-dialog-actions>
